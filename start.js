@@ -25,6 +25,11 @@ function buttonClick2(){
     alert(a)
 
     var q_a = text2.split(/\s/);
-    alert(q_a) 
+    alert(q_a)
+    
+    do{
+        i = 0
+        
+    }while(i<)
 
 }
