@@ -1,6 +1,6 @@
 function buttonClic111(){
     var pcs = document.getElementById('pcs').value;
-    alert ("こんにちは")
-    var nunmber = new Array(pcs);
+    alert (pcs)
+    var nunmber =Array.from(Array(pcs).keys())
     alert (nunmber)
 }
