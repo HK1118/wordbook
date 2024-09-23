@@ -1,4 +1,5 @@
-function buttonClic111(){
+//function buttonClick111(){
+    alert("こんにちは")
     var pcs = document.getElementById('pcs').value;
     alert ("pcs: "+pcs)
     var true_pcs = Number(pcs);
@@ -11,4 +12,4 @@ function buttonClic111(){
     alert(i[2])
     number[number.length] = i[2];
     alert(number)
-}
+//}

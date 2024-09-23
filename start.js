@@ -19,6 +19,9 @@ function buttonClick2(){
     var q_number2 = q_number/2        //問題の個数
     //alert("個数:   "+q_number2)
 
+    window.location.href = 'second Q.html';
+
+    alert("tes2")
     var q = ["tentative"];
 
     let i_2 =0;
@@ -55,9 +58,11 @@ function buttonClick2(){
         random_pcs2.splice(aa,1);
     }while(ii<q_number2)
     random.shift();
-    //alert("乱数数列最終結果:   "+random)
-    //alert("成功です！")
+    alert("乱数数列最終結果:   "+random)
 
-    window.location.href = 'second.html';
-    alert("成功しましたか？")
+    var Qi = 0
+    do{Qi +=1;
+        var Q_number_element = document.getElementById('Q_number');// "第${Qi}問"
+        
+    }while(Qi<q_number2)
 }
