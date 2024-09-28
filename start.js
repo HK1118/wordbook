@@ -62,7 +62,6 @@ function buttonClick2(){
 
     var Qi = 0
     do{Qi +=1;
-        var Q_number_element = document.getElementById('Q_number');// "第${Qi}問"
-        
+        document.getElementById('Q_number').innerHTML = "<p>第${Qi}問</p>";        
     }while(Qi<q_number2)
 }
