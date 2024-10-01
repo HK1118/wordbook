@@ -15,3 +15,18 @@ function buttonClick111(){
     document.getElementById('Q_number') = "第${Qi}問";
     alert("test(2)")
 }
+
+function test(){
+    alert("ページ遷移します！");
+    window.location.href='test2.html';
+    alert("test (in same function)");
+}
+function test(){
+    var elm = document.getElementById('change_text');
+
+    elm.textContent = 'test change';
+}
+function second_page(){
+    alert("test (in new function)");
+
+}
