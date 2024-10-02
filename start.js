@@ -71,7 +71,7 @@ function to_Q_cha(){
     //for (var i = 0; i < q_number2; i++){
         alert('test test tes')
         var aaaa = document.getElementById('Q_number');
-        aaaa.textContent = '第${Q_number}問';
+        document.getElementById('Q_number').innerHTML = `<p>第${Qi}問</p>`;
 
     //}
 }
