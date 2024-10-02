@@ -19,7 +19,7 @@ function buttonClick2(){
     var q_number2 = q_number/2        //問題の個数
     //alert("個数:   "+q_number2)
 
-    window.location.href = 'second Q.html';
+    window.location.href = 'Q.html';
 
     alert("tes2")
     var q = ["tentative"];
@@ -64,4 +64,14 @@ function buttonClick2(){
     do{Qi +=1;
         document.getElementById('Q_number').innerHTML = "<p>第${Qi}問</p>";        
     }while(Qi<q_number2)
+}
+
+function to_Q_cha(){
+    alert("tes")
+    //for (var i = 0; i < q_number2; i++){
+        alert('test test tes')
+        var aaaa = document.getElementById('Q_number');
+        aaaa.textContent = '第${Q_number}問';
+
+    //}
 }
