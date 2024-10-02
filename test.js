@@ -28,5 +28,6 @@ function test(){
 }
 function second_page(){
     alert("test (in new function)");
-
+    let change_text = document.getElementById('change_text').textContent;
+    document.getElementById('change_text').textContent
 }
