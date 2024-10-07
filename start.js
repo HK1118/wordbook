@@ -67,11 +67,20 @@ function buttonClick2(){
 }
 
 function to_Q_cha(){
-    alert("tes")
-    //for (var i = 0; i < q_number2; i++){
-        alert('test test tes')
-        var aaaa = document.getElementById('Q_number');
-        document.getElementById('Q_number').innerHTML = `<p>第${Qi}問</p>`;
+        function AAA(){
+            var num = `${i}`
+            var aaaa = document.getElementById('Q_number');
+            aaaa.textContent = `第${num}問`;
+        }
+        AAA();
 
-    //}
+        function page_change(){
+            window.location.href = 'A miss.html';
+        }
+        page_change();
+        
+        function AA(){
+        window.location.href = 'Q.html';
+        }
+        AA();
 }
