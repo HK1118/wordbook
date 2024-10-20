@@ -24,6 +24,7 @@ function buttonClick2(){
     var q_number = text2.length;
     var q_number2 = q_number/2        //問題の個数
     //alert("個数:   "+q_number2)
+    localStorage.setItem('q_number2', q_number2);
 
     window.location.href = 'Q.html';
 
@@ -90,7 +91,8 @@ function to_Q_cha(){
 }
             
 function AA(){
-    window.location.replace('Q.html');
+    check();
+    
 }
         
 
@@ -166,4 +168,16 @@ function page_A(){
             A.textContent = `あなたの回答:　${yourA}`;
         }
         YourA();
+}
+
+//ぺーーーーじ遷移ーーーー！！最終！！！！！！
+function check(){
+    let QPageVisitCount = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+    let q_number2 = parseInt(localStorage.getItem('q_number2')) || 0;
+
+    if(QPageVisitCount>q_number2){
+        window.location.replace('fin.html');
+    }else{
+        window.location.replace('Q.html');
+    }
 }
