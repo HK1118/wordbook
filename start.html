@@ -6,20 +6,22 @@
     <title>wordbook</title>
     <script src="start.js"></script>
 </head>
-<body>
-    <h1>あいうえおえお</h1>
+<body onload="count_reset()">
+    <h1>問題入力フォーム</h1>
     <p>↓動作確認用↓</p>
-    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
-    <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>
+    <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
+    <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>  -->
+    <p>足し算!!!<input type="submit" value="コピー" onclick="copy_word()"></p>
 
     </br>
     </br>
-    <textarea id="text"></textarea>
-    <input type="submit" value="決定" onclick="buttonClick2()">
+    <p>下の入力ボックスに問題とその答えを入力してください。</p>
+    <p>※"問題と答え"、"答えと次の問題"の間には半角スペースまたは改行を挟んでください。</p>
+    <textarea id="text" placeholder="例:) Q1 A1 Q2 A2 Q3 A3"></textarea>
+    <input type="submit" value="レッツスタート！！！" onclick="buttonClick2()">
     <br>
     <br>
-    <p>☟ページ移動用☟</p>
-    <input type="submit" value="移動" onclick="buttonClick2525()">
-    
+    <!--    <p>☟ページ移動用☟</p>
+    <input type="submit" value="移動" onclick="buttonClick2525()"> -->    
 </body>
 </html>
