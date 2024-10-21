@@ -65,11 +65,13 @@ function buttonClick2(){
         random_pcs2.splice(aa,1);
     }while(ii<q_number2)
     random.shift();
+    localStorage.setItem('random',random)
     //alert("乱数数列最終結果:   "+random)
 
 }
 function to_Q_cha(){
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+    var random = localStorage.getItem('random');
         function AAA(){
             
             var aaaa = document.getElementById('Q_number');
@@ -78,11 +80,13 @@ function to_Q_cha(){
         }
         AAA();
         function Q(){
+            var random2 = random.split(",");
+            var random3 = random2[count];
             var Q1 = document.getElementById('Q');
             var QQ = localStorage.getItem('text');
             var QQQ = QQ.split(/\n|\s/);
-            get_Q = 2*count
-            Q1.textContent = `${QQQ[get_Q]}`;
+            
+            Q1.textContent = `${QQQ[random3]}`;
             //alert(QQQ[get_Q]);
         }
         Q();
@@ -119,7 +123,7 @@ function countQPageVisits() {
     // カウントをインクリメント
     count += 1;
     
-    // ローカルストレージにカウントを保存
+    // ローカジにカウントを保存
     localStorage.setItem('QPageVisitCount', count);
 }
 
@@ -145,6 +149,7 @@ function count_reset(){
 }
 
 function page_A(){
+    let random= localStorage.getItem('random');
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
         function AAA(){
             
@@ -154,11 +159,14 @@ function page_A(){
         }
         AAA();
         function A(){
+            var random2 = random.split(',');
+            var random3 = random2[count];
             var A1 = document.getElementById('A');
             var AA = localStorage.getItem('text');
             var AAA = AA.split(/\n|\s/);
             var get_A = 2*count + 1;
-            A1.textContent = `正しい答え:　　${AAA[get_A]}`;
+            localStorage.setItem('get_A', get_A);
+            A1.textContent = `正しい答え:　　${AAA[random3]}`;
             //alert(AAA[get_A]);
         }
         A();
