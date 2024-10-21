@@ -26,33 +26,7 @@ function buttonClick2() {
     //alert("個数:   "+q_number2)
     localStorage.setItem('q_number2', q_number2);
 
-    window.location.href = 'Q.html';
-
-    //alert("tes2")
-    var q = ["tentative"];
-
-    //let i_2 = 0;
-    //do {
-    //    i_2 += 1;
-    //    get_q = 2 * i_2 - 2
-    //    q[q.length] = text2[get_q];
-    //} while (i_2 < q_number2)
-
-    q.shift();
-
-    var a = ["tentative"];
-
-    let i_3 = 0;
-    do {
-        i_3 += 1;
-        get_a = 2 * i_3 - 1
-        a[a.length] = text2[get_a];
-    } while (i_3 < q_number2)
-
-    a.shift();
-
-    //alert("問題:   "+q)
-    //alert("答え:   "+a)
+    window.location.href = 'Q.html'; 
 
     var random_pcs = Array.from(Array(q_number2).keys());
     var random_pcs2 = random_pcs;
