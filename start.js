@@ -1,28 +1,28 @@
-function buttonClick3(){
+function buttonClick3() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3');
     //alert("コピーしました！(3)")
 }
 
-function buttonClick10(){
+function buttonClick10() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
     //alert("コピーしました！(10)")
 }
 
-function copy_word(){
+function copy_word() {
     navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
     //alert("コピーしました！(足し算")
 }
 
-function buttonClick2525(){
+function buttonClick2525() {
     window.location.replace('Q.html');
 }
 
-function buttonClick2(){
+function buttonClick2() {
     var text = document.getElementById('text').value;
     localStorage.setItem('text', text);
     var text2 = text.split(/\n|\s/);       //改行(問題ごと)
     var q_number = text2.length;
-    var q_number2 = q_number/2        //問題の個数
+    var q_number2 = q_number / 2        //問題の個数
     //alert("個数:   "+q_number2)
     localStorage.setItem('q_number2', q_number2);
 
@@ -31,21 +31,23 @@ function buttonClick2(){
     //alert("tes2")
     var q = ["tentative"];
 
-    let i_2 =0;
-    do{i_2 +=1;
-        get_q = 2*i_2-2
-        q[q.length] = text2[get_q];
-    }while(i_2<q_number2)
-    
+    //let i_2 = 0;
+    //do {
+    //    i_2 += 1;
+    //    get_q = 2 * i_2 - 2
+    //    q[q.length] = text2[get_q];
+    //} while (i_2 < q_number2)
+
     q.shift();
-    
+
     var a = ["tentative"];
 
-    let i_3 =0;
-    do{i_3 +=1;
-        get_a = 2*i_3-1
+    let i_3 = 0;
+    do {
+        i_3 += 1;
+        get_a = 2 * i_3 - 1
         a[a.length] = text2[get_a];
-    }while(i_3<q_number2)
+    } while (i_3 < q_number2)
 
     a.shift();
 
@@ -57,50 +59,50 @@ function buttonClick2(){
     var random = ["tentative"];
 
     var ii = 0
-    do{ii +=1;
+    do {
+        ii += 1;
         var aaa = random_pcs2.length;
-        var aa = Math.floor(Math.random()*aaa);
+        var aa = Math.floor(Math.random() * aaa);
         var number = random_pcs2[aa];
         random[random.length] = number;
-        random_pcs2.splice(aa,1);
-    }while(ii<q_number2)
+        random_pcs2.splice(aa, 1);
+    } while (ii < q_number2)
     random.shift();
-    localStorage.setItem('random',random)
-    //alert("乱数数列最終結果:   "+random)
+    localStorage.setItem('random', random)
+    alert("乱数数列最終結果:   "+random)
 
 }
-function to_Q_cha(){
+function to_Q_cha() {
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     var random = localStorage.getItem('random');
-        function AAA(){
-            
-            var aaaa = document.getElementById('Q_number');
-            var count2 = count + 1;
-            aaaa.textContent = `第${count2}問`;
-        }
-        AAA();
-        function Q(){
-            var random2 = random.split(",");
-            var random3 = random2[count];
-            var Q1 = document.getElementById('Q');
-            var QQ = localStorage.getItem('text');
-            var QQQ = QQ.split(/\n|\s/);
-            
-            Q1.textContent = `${QQQ[random3]}`;
-            //alert(QQQ[get_Q]);
-        }
-        Q();
-        
+    function AAA() {
+        var aaaa = document.getElementById('Q_number');
+        var count2 = count + 1;
+        aaaa.textContent = `第${count2}問`;
+    }
+    AAA();
+    function Q() {
+        var random2 = random.split(",");
+        var random3 = random2[count];
+        var Q1 = document.getElementById('Q');
+        var QQ = localStorage.getItem('text');
+        var QQQ = QQ.split(/\n|\s/);
+        var random4 = random3 * 2;
+        Q1.textContent = `${QQQ[random4]}`;
+        //alert(QQQ[get_Q]);
+    }
+    Q();
+
 
 }
-            
-function AA(){
-    check();
-    
-}
-        
 
-function page_change(){
+//function AA() {
+//    check();
+
+//}
+
+
+function page_change() {
     window.location.replace('A.html');
     var YourA = document.getElementById('your_A').value;
     //alert("あなたの回答:   "+YourA)
@@ -112,25 +114,26 @@ function page_change(){
 function countQPageVisits() {
     // ローカルストレージからカウントを取得
     let count = localStorage.getItem('QPageVisitCount');
-    
+
     // カウントが存在しない場合は初期化
     if (count === null) {
         count = 0;
     } else {
         count = parseInt(count, 10);
     }
-    
+
     // カウントをインクリメント
     count += 1;
-    
+
     // ローカジにカウントを保存
     localStorage.setItem('QPageVisitCount', count);
 }
 
 // Q.htmlに遷移する関数
-function AA(){
+function AA() {
     countQPageVisits(); // ページ遷移の回数をカウント
-    window.location.replace('Q.html');
+    
+    check();
 }
 
 // ページ遷移の回数を取得する関数
@@ -144,48 +147,46 @@ function getQPageVisitCount() {
     return count;
 }
 
-function count_reset(){
+function count_reset() {
     localStorage.setItem('QPageVisitCount', 0);
 }
 
-function page_A(){
-    let random= localStorage.getItem('random');
+function page_A() {
+    let random = localStorage.getItem('random');
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-        function AAA(){
-            
-            var aaaa = document.getElementById('A_number');
-            var count2 = count + 1;
-            aaaa.textContent = `第${count2}問`;
-        }
-        AAA();
-        function A(){
-            var random2 = random.split(',');
-            var random3 = random2[count];
-            var A1 = document.getElementById('A');
-            var AA = localStorage.getItem('text');
-            var AAA = AA.split(/\n|\s/);
-            var get_A = 2*count + 1;
-            localStorage.setItem('get_A', get_A);
-            A1.textContent = `正しい答え:　　${AAA[random3]}`;
-            //alert(AAA[get_A]);
-        }
-        A();
-        function YourA(){
-            let yourA = localStorage.getItem('yourA');
-            var A = document.getElementById('yourA');
-            A.textContent = `あなたの回答:　${yourA}`;
-        }
-        YourA();
+    function AAA() {
+        var aaaa = document.getElementById('A_number');
+        var count2 = count + 1;
+        aaaa.textContent = `第${count2}問`;
+    }
+    AAA();
+    function A() {
+        var random2 = random.split(',');
+        var random3 = random2[count];
+        var A1 = document.getElementById('A');
+        var AA = localStorage.getItem('text');
+        var AAA = AA.split(/\n|\s/);
+        var random4 = random3 * 2 + 1;
+        A1.textContent = `正しい答え:　　${AAA[random4]}`;
+    }
+    A();
+    function YourA() {
+        let yourA = localStorage.getItem('yourA');
+        var A = document.getElementById('yourA');
+        A.textContent = `あなたの回答:　${yourA}`;
+    }
+    YourA();
 }
 
 //ぺーーーーじ遷移ーーーー！！最終！！！！！！
-function check(){
-    let QPageVisitCount = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+function check() {
+    let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     let q_number2 = parseInt(localStorage.getItem('q_number2')) || 0;
 
-    if(QPageVisitCount>q_number2){
+    if (count > q_number2 - 1) {
         window.location.replace('fin.html');
-    }else{
+    } else {
         window.location.replace('Q.html');
+        //alert("まだです")
     }
 }
