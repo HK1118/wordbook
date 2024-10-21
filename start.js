@@ -1,3 +1,5 @@
+
+
 function buttonClick3() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3');
     //alert("コピーしました！(3)")
@@ -37,7 +39,9 @@ function buttonClick2() {
     }
     random.shift();
     localStorage.setItem('random', random)
-    ("乱数数列最終結果:   "+random)
+    
+    localStorage.setItem('correct_count',null);
+    localStorage.setItem('miss_count',null);
 
 }
 
@@ -58,7 +62,6 @@ function to_Q_cha() {
         var QQQ = QQ.split(",");
         var random4 = random3 * 2;
         Q1.textContent = `${QQQ[random4]}`;
-        alert(QQQ[random4]);
     }
     Q();
 
@@ -114,6 +117,8 @@ function count_reset() {
     localStorage.setItem('QPageVisitCount', 0);
 }
 
+
+
 function page_A() {
     let random = localStorage.getItem('random');
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
@@ -131,7 +136,7 @@ function page_A() {
         var AAA = AA.split(",");
         var random4 = random3 * 2 + 1;
         A1.textContent = `正しい答え:　　${AAA[random4]}`;
-        localStorage.setItem(correct,AAA[random4])
+        localStorage.setItem('correct',AAA[random4]);
     }
     A();
     function YourA() {
@@ -141,14 +146,22 @@ function page_A() {
         localStorage.setItem('yourA',yourA);
     }
     YourA();
+
     function correct_or_miss(){
         var correct = localStorage.getItem('correct');
         var yourA = localStorage.getItem('yourA');
         var correct_miss = document.getElementById('correct_miss');
+        var correct_count = parseInt(localStorage.getItem('correct_count')) || 0;
+        var miss_count = parseInt(localStorage.getItem('miss_count')) || 0;
+        
         if (yourA == correct){
             correct_miss.textContent = "正解！！！";
+            correct_count += 1;
+            localStorage.setItem('correct_count',correct_count);
         }else{
             correct_miss.textContent = "不正解...";
+            miss_count += 1; 
+            localStorage.setItem('miss_count',miss_count);
         }
     }
     correct_or_miss();
@@ -164,4 +177,13 @@ function check() {
     } else {
         window.location.replace('Q.html');
     }
+}
+
+function fin() {
+    let correct_count = parseInt(localStorage.getItem('correct_count')) || 0;
+    let miss_count = parseInt(localStorage.getItem('miss_count')) || 0;
+    var correct = document.getElementById('correct');
+    var miss = document.getElementById('miss');
+    correct.textContent = `正解数:   ${correct_count}`;
+    miss.textContent = `不正解数:   ${miss_count}`;
 }
