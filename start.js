@@ -69,7 +69,7 @@ function buttonClick2() {
     } while (ii < q_number2)
     random.shift();
     localStorage.setItem('random', random)
-    alert("乱数数列最終結果:   "+random)
+    //alert("乱数数列最終結果:   "+random)
 
 }
 function to_Q_cha() {
