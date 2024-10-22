@@ -202,3 +202,11 @@ function pressKey_delete(){
     let your_A = document.getElementById('your_A');
     your_A.value = your_A.value.slice(0,-1);
 }
+function pressKey_s_clear(){
+    let text = document.getElementById('text');
+    text.value = "";
+}
+function pressKey_clear(){
+    let your_A = document.getElementById('your_A');
+    your_A.value = "";
+}
