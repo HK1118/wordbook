@@ -158,7 +158,7 @@ function page_A() {
             localStorage.setItem('correct_count',correct_count);
         }else{
             correct_miss.textContent = "不正解...";
-            miss_count += 1; 
+            miss_count += 1;
             localStorage.setItem('miss_count',miss_count);
         }
     }
@@ -199,6 +199,6 @@ function pressKey_s_delete(){
     text.value = text.value.slice(0,-1);
 }
 function pressKey_delete(){
-    let yourA = document.getElementById('yourA');
-    yourA.value = yourA.value.slice(0,-1);
+    let your_A = document.getElementById('your_A');
+    your_A.value = your_A.value.slice(0,-1);
 }
