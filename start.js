@@ -187,3 +187,12 @@ function fin() {
     correct.textContent = `正解数:   ${correct_count}`;
     miss.textContent = `不正解数:   ${miss_count}`;
 }
+
+function pressKey(key){
+    const your_A = document.getElementById('your_A');
+    your_A.value += key;
+}
+function pressKey_s(key){
+    const text = document.getElementById('text')
+    text.value += key;
+}
