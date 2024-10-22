@@ -1,3 +1,14 @@
+function loadExternalScript(url) {
+    const script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+loadExternalScript('https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js');
+
+
 function buttonClick3() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3');
     //alert("コピーしました！(3)")
@@ -11,6 +22,9 @@ function buttonClick10() {
 function copy_word() {
     navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
     //alert("コピーしました！(足し算")
+    party.confetti(runButton,{
+        count: party.variation.range(20, 40),
+    });
 }
 
 function buttonClick2525() {
@@ -210,3 +224,4 @@ function pressKey_clear(){
     let your_A = document.getElementById('your_A');
     your_A.value = "";
 }
+
