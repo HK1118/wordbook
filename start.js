@@ -191,6 +191,14 @@ function pressKey(key){
     your_A.value += key;
 }
 function pressKey_s(key){
-    const text = document.getElementById('text')
+    const text = document.getElementById('text');
     text.value += key;
+}
+function pressKey_s_delete(){
+    let text = document.getElementById('text');
+    text.value = text.value.slice(0,-1);
+}
+function pressKey_delete(){
+    let yourA = document.getElementById('yourA');
+    yourA.value = yourA.value.slice(0,-1);
 }
