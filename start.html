@@ -21,6 +21,15 @@
             margin: 29px auto;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('dblclick', (e) => {
+                e.preventDefault(); // ダブルクリックイベントを無効にする
+            });
+        });
+    });
+    </script>
 </head>
 <body onload="count_reset()">
     <h1>問題入力フォーム</h1>
@@ -28,9 +37,6 @@
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
     <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>  -->
     <p>足し算!!!<input type="submit" value="コピー" onclick="copy_word()"></p>
-
-    </br>
-    </br>
     <p>下の入力ボックスに問題とその答えを入力してください。</p>
     <p>※"問題と答え"、"答えと次の問題"の間には半角スペースまたは改行を挟んでください。</p>
     <textarea id="text" placeholder="例:) Q1 A1 Q2 A2 Q3 A3" rows="10" cols="50"></textarea>
