@@ -18,6 +18,15 @@
             margin: 29px auto;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('dblclick', (e) => {
+                e.preventDefault(); // ダブルクリックイベントを無効にする
+            });
+        });
+    });
+    </script>
 </head>
 <body onload="to_Q_cha()">
     <h1 id="Q_number">読み込みエラー</h1>
