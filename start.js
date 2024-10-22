@@ -1,5 +1,3 @@
-
-
 function buttonClick3() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3');
     //alert("コピーしました！(3)")
