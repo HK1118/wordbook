@@ -18,26 +18,20 @@ function buttonClick2525() {
 }
 
 function buttonClick2() {
-    const input_text = document.getElementById('text').value.split(/\n|\s/);
-    localStorage.setItem('input_text', input_text);
-    const q_number = input_text.length / 2;     //問題の個数
-    //alert("個数:   "+q_number)
-    localStorage.setItem('q_number', q_number);
+    const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== ""); // 入力されたテキストを取得し、改行で分割、空の要素を削除
+    localStorage.setItem('input_texts', input_texts);
+    const question_count = input_texts.length / 2;    // 問題の個数
+    localStorage.setItem('question_count', question_count);
 
     window.location.href = 'Q.html';
 
-    var q_number_keys = Array.from(Array(q_number).keys());
-    var random = ["tentative"];
-
-    for (let i = 0; i < q_number; i++) {
-        var random_key = Math.floor(Math.random() * q_number_keys.length);
-        var number = q_number_keys[random_key];
-        random[random.length] = number;
-        q_number_keys.splice(random_key, 1);
+    const question_numbers = Array.from(Array(question_count).keys());
+    for (let i = question_numbers.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [question_numbers[i], question_numbers[j]] = [question_numbers[j], question_numbers[i]];
     }
-    random.shift();
-    localStorage.setItem('random', random)
     
+    localStorage.setItem('question_numbers', question_numbers);
     localStorage.setItem('correct_count',null);
     localStorage.setItem('miss_count',null);
 
@@ -45,7 +39,7 @@ function buttonClick2() {
 
 function to_Q_cha() {
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    var random = localStorage.getItem('random');
+    var random = localStorage.getItem('question_numbers');
     function AAA() {
         var aaaa = document.getElementById('Q_number');
         var count2 = count + 1;
@@ -56,7 +50,7 @@ function to_Q_cha() {
         var random2 = random.split(",");
         var random3 = random2[count];
         var Q1 = document.getElementById('Q');
-        var QQ = localStorage.getItem('input_text');
+        var QQ = localStorage.getItem('input_texts');
         var QQQ = QQ.split(",");
         var random4 = random3 * 2;
         Q1.textContent = `${QQQ[random4]}`;
@@ -118,7 +112,7 @@ function count_reset() {
 
 
 function page_A() {
-    let random = localStorage.getItem('random');
+    let random = localStorage.getItem('question_numbers');
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     function AAA() {
         var aaaa = document.getElementById('A_number');
@@ -130,7 +124,7 @@ function page_A() {
         var random2 = random.split(',');
         var random3 = random2[count];
         var A1 = document.getElementById('A');
-        var AA = localStorage.getItem('input_text');
+        var AA = localStorage.getItem('input_texts');
         var AAA = AA.split(",");
         var random4 = random3 * 2 + 1;
         A1.textContent = `正しい答え:　　${AAA[random4]}`;
@@ -168,7 +162,7 @@ function page_A() {
 //ぺーーーーじ遷移ーーーー！！最終！！！！！！
 function check() {
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    let q_number = parseInt(localStorage.getItem('q_number')) || 0;
+    let q_number = parseInt(localStorage.getItem('question_count')) || 0;
 
     if (count > q_number - 1) {
         window.location.replace('fin.html');
@@ -191,11 +185,11 @@ function pressKey(key){
     your_A.value += key;
 }
 function pressKey_s(key){
-    const text = document.getElementById('text');
+    const text = document.getElementById('input_text');
     text.value += key;
 }
 function pressKey_s_delete(){
-    let text = document.getElementById('text');
+    let text = document.getElementById('input_text');
     text.value = text.value.slice(0,-1);
 }
 function pressKey_delete(){
