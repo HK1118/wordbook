@@ -211,7 +211,7 @@ function pressKey_s_SHIFT() {
 }
 
 function save(){
-    let input_texts = localStorage.getItem('input_texts');
+    let input_texts = JSON.parse(localStorage.getItem('input_texts'));
     alert(input_texts);
     let blob = new Blob([input_texts],{ type: 'text/plain'});
     let url = URL.createObjectURL(blob);
