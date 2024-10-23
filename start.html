@@ -20,6 +20,9 @@
             max-width: 300px;
             margin: 29px auto;
         }
+        .hidden{
+            display: none;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -37,6 +40,7 @@
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
     <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>  -->
     <p>足し算!!!<input type="submit" value="コピー" onclick="copy_word()"></p>
+    <p>英語<input type="submit" value="コピー" onclick="Japanese_English()"></p>
     <p>下の入力ボックスに問題とその答えを入力してください。</p>
     <p>※"問題と答え"、"答えと次の問題"の間には半角スペースまたは改行を挟んでください。</p>
     <textarea id="input_text" placeholder="例:) Q1 A1 Q2 A2 Q3 A3" rows="10" cols="50"></textarea>
@@ -55,8 +59,8 @@
         <button class="key" onclick="pressKey_s('=')">=</button>
         <button class="key" onclick="pressKey_s('.')">.</button>
         <button class="key" onclick="pressKey_s('0')">0</button>
-        <button class="key" onclick="pressKey('(')">(</button>
-        <button class="key" onclick="pressKey(')')">)</button>
+        <button class="key" onclick="pressKey_s('(')">(</button>
+        <button class="key" onclick="pressKey_s(')')">)</button>
         <button class="key" onclick="pressKey_s('x')">x</button>
         <button class="key" onclick="pressKey_s('y')">y</button>
         <button class="key" onclick="pressKey_s('\n')">改行</button>
@@ -64,6 +68,76 @@
         <button id="delete" onclick="pressKey_s_delete()">削除</button>
         <button id="clear" onclick="pressKey_s_clear()">クリア</button>
     </div>
+    <div id="keypad_s_alpha">
+
+        <button class="key" onclick="pressKey_s('q')">q</button>
+        <button class="key" onclick="pressKey_s('w')">w</button>
+        <button class="key" onclick="pressKey_s('e')">e</button>
+        <button class="key" onclick="pressKey_s('r')">r</button>
+        <button class="key" onclick="pressKey_s('t')">t</button>
+        <button class="key" onclick="pressKey_s('y')">y</button>
+        <button class="key" onclick="pressKey_s('u')">u</button>
+        <button class="key" onclick="pressKey_s('i')">i</button>
+        <button class="key" onclick="pressKey_s('o')">o</button>
+        <button class="key" onclick="pressKey_s('p')">p</button><br>
+        <button class="key" onclick="pressKey_s('a')">a</button>
+        <button class="key" onclick="pressKey_s('s')">s</button>
+        <button class="key" onclick="pressKey_s('d')">d</button>
+        <button class="key" onclick="pressKey_s('f')">f</button>
+        <button class="key" onclick="pressKey_s('g')">g</button>
+        <button class="key" onclick="pressKey_s('h')">h</button>
+        <button class="key" onclick="pressKey_s('j')">j</button>
+        <button class="key" onclick="pressKey_s('k')">k</button>
+        <button class="key" onclick="pressKey_s('l')">l</button><br>
+        <button id="shift" onclick="pressKey_s_shift()">⇧<button>
+        <button class="key" onclick="pressKey_s('z')">z</button>
+        <button class="key" onclick="pressKey_s('x')">x</button>
+        <button class="key" onclick="pressKey_s('c')">c</button>
+        <button class="key" onclick="pressKey_s('v')">v</button>
+        <button class="key" onclick="pressKey_s('b')">b</button>
+        <button class="key" onclick="pressKey_s('n')">n</button>
+        <button class="key" onclick="pressKey_s('m')">m</button>
+        <button id="delete" onclick="pressKey_s_delete()">削除</button><br>
+        <button class="key" onclick="pressKey_s('\n')">改行</button>
+        <button class="key" onclick="pressKey_s(' ')">空白</button>
+        <button id="clear" onclick="pressKey_s_clear()">クリア</button>
+    </div>
+    <div id="keypad_s_ALPHA">
+        
+        <button class="key" onclick="pressKey_s('Q')">Q</button>
+        <button class="key" onclick="pressKey_s('W')">W</button>
+        <button class="key" onclick="pressKey_s('E')">E</button>
+        <button class="key" onclick="pressKey_s('R')">R</button>
+        <button class="key" onclick="pressKey_s('T')">T</button>
+        <button class="key" onclick="pressKey_s('Y')">Y</button>
+        <button class="key" onclick="pressKey_s('U')">U</button>
+        <button class="key" onclick="pressKey_s('I')">I</button>
+        <button class="key" onclick="pressKey_s('O')">O</button>
+        <button class="key" onclick="pressKey_s('P')">P</button><br>
+        <button class="key" onclick="pressKey_s('A')">A</button>
+        <button class="key" onclick="pressKey_s('S')">S</button>
+        <button class="key" onclick="pressKey_s('D')">D</button>
+        <button class="key" onclick="pressKey_s('F')">F</button>
+        <button class="key" onclick="pressKey_s('G')">G</button>
+        <button class="key" onclick="pressKey_s('H')">H</button>
+        <button class="key" onclick="pressKey_s('J')">J</button>
+        <button class="key" onclick="pressKey_s('K')">K</button>
+        <button class="key" onclick="pressKey_s('L')">L</button><br>
+        <button id="shift" onclick="pressKey_s_SHIFT()">⇧<button>
+        <button class="key" onclick="pressKey_s('Z')">Z</button>
+        <button class="key" onclick="pressKey_s('X')">X</button>
+        <button class="key" onclick="pressKey_s('C')">C</button>
+        <button class="key" onclick="pressKey_s('V')">V</button>
+        <button class="key" onclick="pressKey_s('B')">B</button>
+        <button class="key" onclick="pressKey_s('N')">N</button>
+        <button class="key" onclick="pressKey_s('M')">M</button>
+        <button id="delete" onclick="pressKey_s_delete()">削除</button><br>
+        <button class="key" onclick="pressKey_s('\n')">改行</button>
+        <button class="key" onclick="pressKey_s(' ')">空白</button>
+        <button id="clear" onclick="pressKey_s_clear()">クリア</button>
+
+    </div>
+
     <input type="submit" value="レッツスタート！！！" onclick="buttonClick2()">
     <br>
     <br>
