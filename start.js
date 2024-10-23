@@ -36,7 +36,9 @@ function buttonClick2525() {
 
 function buttonClick2() {
     const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== ""); // 入力されたテキストを取得し、改行で分割、空の要素を削除
-    localStorage.setItem('input_texts', input_texts);
+    // 配列はJSON形式でローカルストレージに保存
+    // 取り出す時はJSON.parse()で取り出す
+    localStorage.setItem('input_texts', JSON.stringify(input_texts));
     const question_count = input_texts.length / 2;    // 問題の個数
     localStorage.setItem('question_count', question_count);
 
@@ -47,31 +49,22 @@ function buttonClick2() {
         let j = Math.floor(Math.random() * (i + 1));
         [question_numbers[i], question_numbers[j]] = [question_numbers[j], question_numbers[i]];
     }
-
-    localStorage.setItem('question_numbers', question_numbers);
+    localStorage.setItem('question_numbers', JSON.stringify(question_numbers));
     localStorage.setItem('correct_count', null);
     localStorage.setItem('miss_count', null);
 
 }
 
-function to_Q_cha() {
+function page_generate() {
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    var random = localStorage.getItem('question_numbers');
-    var aaaa = document.getElementById('Q_number');
-    var count2 = count + 1;
-    aaaa.textContent = `第${count2}問`;
+    var question_numbers = JSON.parse(localStorage.getItem('question_numbers'));
+    var question_number_text = document.getElementById('Q_number');
+    question_number_text.textContent = `第${count + 1}問`;
 
-    var random2 = random.split(",");
-    var random3 = random2[count];
-    var Q1 = document.getElementById('Q');
-    var QQ = localStorage.getItem('input_texts');
-    var QQQ = QQ.split(",");
-    var random4 = random3 * 2;
-    Q1.textContent = `${QQQ[random4]}`;
-
-
-
-
+    var random_key = question_numbers[count] * 2;
+    var question_text = document.getElementById('Q');
+    var input_texts = JSON.parse(localStorage.getItem('input_texts'));
+    question_text.textContent = input_texts[random_key];
 }
 
 function page_change() {
@@ -126,21 +119,18 @@ function count_reset() {
 
 
 function page_A() {
-    let random = localStorage.getItem('question_numbers');
+    let random = JSON.parse(localStorage.getItem('question_numbers'));
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
 
     var aaaa = document.getElementById('A_number');
     var count2 = count + 1;
     aaaa.textContent = `第${count2}問`;
-
-    var random2 = random.split(',');
-    var random3 = random2[count];
+    var random3 = random[count];
     var A1 = document.getElementById('A');
-    var AA = localStorage.getItem('input_texts');
-    var AAA = AA.split(",");
+    var AA = JSON.parse(localStorage.getItem('input_texts'));
     var random4 = random3 * 2 + 1;
-    A1.textContent = `正しい答え:　　${AAA[random4]}`;
-    localStorage.setItem('correct', AAA[random4]);
+    A1.textContent = `正しい答え:　　${AA[random4]}`;
+    localStorage.setItem('correct', AA[random4]);
 
     let yourA = localStorage.getItem('yourA');
     var A = document.getElementById('yourA');
