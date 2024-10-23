@@ -34,8 +34,12 @@ function buttonClick2525() {
     window.location.replace('Q.html');
 }
 
-function buttonClick2() {
+function start() {
     const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== ""); // 入力されたテキストを取得し、改行で分割、空の要素を削除
+    if (input_texts.length % 2 !== 0) { // 要素が奇数個の場合リターン
+        alert('問題と答えの数が一致していません');
+        return;
+    }
     // 配列はJSON形式でローカルストレージに保存
     // 取り出す時はJSON.parse()で取り出す
     localStorage.setItem('input_texts', JSON.stringify(input_texts));
@@ -45,7 +49,7 @@ function buttonClick2() {
     window.location.href = 'Q.html';
 
     const question_numbers = Array.from(Array(question_count).keys());
-    for (let i = question_numbers.length - 1; i > 0; i--) {
+    for (let i = question_numbers.length - 1; i > 0; i--) { // question_numbersをシャッフル
         let j = Math.floor(Math.random() * (i + 1));
         [question_numbers[i], question_numbers[j]] = [question_numbers[j], question_numbers[i]];
     }
@@ -56,14 +60,13 @@ function buttonClick2() {
 }
 
 function page_generate() {
-    let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    var question_numbers = JSON.parse(localStorage.getItem('question_numbers'));
-    var question_number_text = document.getElementById('Q_number');
+    const count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+    const question_numbers = JSON.parse(localStorage.getItem('question_numbers'));
+    const question_number_text = document.getElementById('Q_number');
     question_number_text.textContent = `第${count + 1}問`;
-
-    var random_key = question_numbers[count] * 2;
-    var question_text = document.getElementById('Q');
-    var input_texts = JSON.parse(localStorage.getItem('input_texts'));
+    const random_key = question_numbers[count] * 2;
+    const input_texts = JSON.parse(localStorage.getItem('input_texts'));
+    const question_text = document.getElementById('Q');
     question_text.textContent = input_texts[random_key];
 }
 
@@ -84,7 +87,7 @@ function countQPageVisits() {
     if (count === null) {
         count = 0;
     } else {
-        count = parseInt(count, 10);
+        count = parseInt(count);
     }
 
     // カウントをインクリメント
@@ -101,19 +104,19 @@ function AA() {
     check();
 }
 
-// ページ遷移の回数を取得する関数
-function getQPageVisitCount() {
-    let count = localStorage.getItem('QPageVisitCount');
-    if (count === null) {
-        count = 0;
-    } else {
-        count = parseInt(count, 10);
-    }
-    return count;
-}
+// // ページ遷移の回数を取得する関数
+// function getQPageVisitCount() {
+//     let count = localStorage.getItem('QPageVisitCount');
+//     if (count === null) {
+//         count = 0;
+//     } else {
+//         count = parseInt(count, 10);
+//     }
+//     return count;
+// }
 
-function count_reset() {
-    localStorage.setItem('QPageVisitCount', 0);
+function local_storage_clear() {
+    localStorage.clear();
 }
 
 
@@ -210,10 +213,10 @@ function pressKey_s_SHIFT() {
     document.getElementById('keypad_s_alpha').classList.remove('hidden');
 }
 
-function save(){
-    let input_texts = localStorage.getItem('input_texts');
-    alert(input_texts);
-    let blob = new Blob([input_texts],{ type: 'text/plain'});
+function save() {
+    let input_texts = JSON.parse(localStorage.getItem('input_texts'));
+    // alert(input_texts);
+    let blob = new Blob([input_texts], { type: 'text/plain' });
     let url = URL.createObjectURL(blob);
     let a = document.createElement('a');
     a.href = url;
