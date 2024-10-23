@@ -40,6 +40,8 @@ function start() {
         alert('問題と答えの数が一致していません');
         return;
     }
+
+    localStorage.setItem('input_texts_save', JSON.stringify(document.getElementById('input_text').value)); // 配列はJSON形式でローカルストレージに保存
     // 配列はJSON形式でローカルストレージに保存
     // 取り出す時はJSON.parse()で取り出す
     localStorage.setItem('input_texts', JSON.stringify(input_texts));
@@ -214,8 +216,9 @@ function pressKey_s_SHIFT() {
 }
 
 function save() {
-    let input_texts = JSON.parse(localStorage.getItem('input_texts'));
-    // alert(input_texts);
+    let input_texts = JSON.parse(localStorage.getItem('input_texts_save'));
+    //let input_texts = JSON.parse(localStorage.getItem('input_texts'));
+    alert(input_texts);
     let blob = new Blob([input_texts], { type: 'text/plain' });
     let url = URL.createObjectURL(blob);
     let a = document.createElement('a');
