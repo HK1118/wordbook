@@ -219,3 +219,17 @@ function pressKey_s_SHIFT() {
     document.getElementById('keypad_s_ALPHA').classList.add('hidden');
     document.getElementById('keypad_s_alpha').classList.remove('hidden');
 }
+
+function save(){
+    let input_texts = localStorage.getItem('input_texts');
+    alert(input_texts);
+    let blob = new Blob([input_texts],{ type: 'text/plain'});
+    let url = URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = 'Question.text';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
