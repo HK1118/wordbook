@@ -34,6 +34,20 @@ function buttonClick2525() {
     window.location.replace('Q.html');
 }
 
+function fileRead(event){
+    const file = event.target.files[0];
+    if(file){
+        const reader = new FileReader();
+        reader.onload =function(e){
+            const contents = e.target.result;
+            document.getElementById('input_text').value = contents;
+        };
+        reader.readAsText(file);
+    } else{
+        alert('ファイルが読み込めません');
+    }
+}
+
 function start() {
     const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== ""); // 入力されたテキストを取得し、改行で分割、空の要素を削除
     if (input_texts.length % 2 !== 0) { // 要素が奇数個の場合リターン
