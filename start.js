@@ -18,7 +18,7 @@ function buttonClick10() {
     navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
     //alert("コピーしました！(10)")
 }
-function Japanese_English(){
+function Japanese_English() {
     navigator.clipboard.writeText('英語 English 日本語 Japanese 犬 dog 猫 cat')
 }
 
@@ -57,22 +57,19 @@ function buttonClick2() {
 function to_Q_cha() {
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     var random = localStorage.getItem('question_numbers');
-    function AAA() {
-        var aaaa = document.getElementById('Q_number');
-        var count2 = count + 1;
-        aaaa.textContent = `第${count2}問`;
-    }
-    AAA();
-    function Q() {
-        var random2 = random.split(",");
-        var random3 = random2[count];
-        var Q1 = document.getElementById('Q');
-        var QQ = localStorage.getItem('input_texts');
-        var QQQ = QQ.split(",");
-        var random4 = random3 * 2;
-        Q1.textContent = `${QQQ[random4]}`;
-    }
-    Q();
+    var aaaa = document.getElementById('Q_number');
+    var count2 = count + 1;
+    aaaa.textContent = `第${count2}問`;
+
+    var random2 = random.split(",");
+    var random3 = random2[count];
+    var Q1 = document.getElementById('Q');
+    var QQ = localStorage.getItem('input_texts');
+    var QQQ = QQ.split(",");
+    var random4 = random3 * 2;
+    Q1.textContent = `${QQQ[random4]}`;
+
+
 
 
 }
@@ -213,12 +210,12 @@ function pressKey_clear() {
     your_A.value = "";
 }
 
-function pressKey_s_shift(){
+function pressKey_s_shift() {
     document.getElementById('keypad_s_alpha').classList.add('hidden');
     document.getElementById('keypad_s_ALPHA').classList.remove('hidden');
 
 }
-function pressKey_s_SHIFT(){
+function pressKey_s_SHIFT() {
     document.getElementById('keypad_s_ALPHA').classList.add('hidden');
     document.getElementById('keypad_s_alpha').classList.remove('hidden');
 }
