@@ -34,7 +34,7 @@
     });
     </script>
 </head>
-<body onload="count_reset()">
+<body onload="local_storage_clear()">
     <h1>問題入力フォーム</h1>
     <p>↓動作確認用↓</p>
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
@@ -45,7 +45,7 @@
     <p>※"問題と答え"、"答えと次の問題"の間には半角スペースまたは改行を挟んでください。</p>
     <textarea id="input_text" placeholder="例:) Q1 A1 Q2 A2 Q3 A3" rows="10" cols="50"></textarea><br>
 
-    <input type="submit" value="レッツスタート！！！" onclick="buttonClick2()">
+    <input type="submit" value="レッツスタート！！！" onclick="start()">
 
     <div id="keypad_s">
         <button class="key" onclick="pressKey_s('1')">1</button>
@@ -145,6 +145,6 @@
     <br>
     <br>
     <!--    <p>☟ページ移動用☟</p>
-    <input type="submit" value="移動" onclick="buttonClick2525()"> -->    
+    <input type="submit" value="移動" onclick="start525()"> -->    
 </body>
 </html>
