@@ -1,3 +1,5 @@
+
+
 function loadExternalScript(url) {
     const script = document.createElement('script');
     script.src = url;
@@ -12,7 +14,31 @@ function setTextArea(setText) {
     document.getElementById('input_text').value += setText;
 }
 
+<<<<<<< HEAD
 function fileRead(event) {
+=======
+function buttonClick10() {
+    navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
+    //alert("コピーしました！(10)")
+}
+function Japanese_English() {
+    navigator.clipboard.writeText('英語 English 日本語 Japanese 犬 dog 猫 cat')
+}
+
+function copy_word() {
+    navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
+    //alert("コピーしました！(足し算")
+    party.confetti(runButton, {
+        count: party.variation.range(20, 40),
+    });
+}
+
+function buttonClick2525() {f
+    window.location.replace('Q.html');
+}
+
+function fileRead(event){
+>>>>>>> df8ab2b (ああ)
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -61,6 +87,7 @@ function question_page_generate() {
     const input_texts = JSON.parse(localStorage.getItem('input_texts'));
     const question_text = document.getElementById('Q');
     question_text.textContent = input_texts[random_key];
+    localStorage.setItem('now_Question', input_texts[random_key]);
 }
 
 function page_change() {
@@ -99,6 +126,12 @@ function AA() {
 
 function local_storage_clear() {
     localStorage.clear();
+    localStorage.setItem('correct_yourA',JSON.stringify(null));
+    localStorage.setItem('miss_yourA',JSON.stringify(null));
+    localStorage.setItem('correct_Question',JSON.stringify(null));
+    localStorage.setItem('miss_Question',JSON.stringify(null));
+    localStorage.setItem('correct_Answer',JSON.stringify(null));
+    localStorage.setItem('miss_Answer',JSON.stringify(null));
 }
 
 
@@ -126,15 +159,43 @@ function page_A() {
     var correct_miss = document.getElementById('correct_miss');
     var correct_count = parseInt(localStorage.getItem('correct_count')) || 0;
     var miss_count = parseInt(localStorage.getItem('miss_count')) || 0;
-
+    var now_Question = localStorage.getItem('ne')
     if (yourA == correct) {
         correct_miss.textContent = "正解！！！";
         correct_count += 1;
         localStorage.setItem('correct_count', correct_count);
+
+        var correct_yourA = JSON.parse(localStorage.getItem('correct_yourA')) || [];
+        correct_yourA.push(yourA);
+        alert(correct_yourA);
+        localStorage.setItem('correct_yourA',JSON.stringify(correct_yourA));
+        
+        var correct_Answer = JSON.parse(localStorage.getItem('correct_Answer')) || [];
+        correct_Answer.push(AA[random4]);
+        alert(correct_Answer);
+        localStorage.setItem('correct_yourA',JSON.stringify(correct_Answer));
+
+
+        var correct_Question = JSON.parse(localStorage.getItem('correct_Question')) || [];
+        correct_Question.push();
+        alert(correct_Question);
+        localStorage.setItem('correct_Question',JSON.stringify(correct_Question));
+
+
     } else {
         correct_miss.textContent = "不正解...";
         miss_count += 1;
         localStorage.setItem('miss_count', miss_count);
+
+        var miss_yourA = JSON.parse(localStorage.getItem('miss_yourA')) || [];
+        miss_yourA.push(yourA);
+        alert(miss_yourA);
+        localStorage.setItem('miss_yourA',JSON.stringify(miss_yourA));
+
+        var miss_Answer = JSON.parse(localStorage.getItem('miss_Answer')) || [];
+        miss_Answer.push(AA[random4]);
+        alert(miss_Answer);
+        localStorage.setItem('miss_Answer',JSON.stringify(miss_Answer));
     }
 
 }
