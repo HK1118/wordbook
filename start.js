@@ -8,42 +8,20 @@ function loadExternalScript(url) {
 
 loadExternalScript('https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js');
 
-
-function buttonClick3() {
-    navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3');
-    //alert("コピーしました！(3)")
+function setTextArea(setText) {
+    document.getElementById('input_text').value += setText;
 }
 
-function buttonClick10() {
-    navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
-    //alert("コピーしました！(10)")
-}
-function Japanese_English() {
-    navigator.clipboard.writeText('英語 English 日本語 Japanese 犬 dog 猫 cat')
-}
-
-function copy_word() {
-    navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
-    //alert("コピーしました！(足し算")
-    party.confetti(runButton, {
-        count: party.variation.range(20, 40),
-    });
-}
-
-function buttonClick2525() {
-    window.location.replace('Q.html');
-}
-
-function fileRead(event){
+function fileRead(event) {
     const file = event.target.files[0];
-    if(file){
+    if (file) {
         const reader = new FileReader();
-        reader.onload =function(e){
+        reader.onload = function (e) {
             const contents = e.target.result;
-            document.getElementById('input_text').value = contents;
+            document.getElementById('input_text').value += contents;
         };
         reader.readAsText(file);
-    } else{
+    } else {
         alert('ファイルが読み込めません');
     }
 }
@@ -72,10 +50,9 @@ function start() {
     localStorage.setItem('question_numbers', JSON.stringify(question_numbers));
     localStorage.setItem('correct_count', null);
     localStorage.setItem('miss_count', null);
-
 }
 
-function page_generate() {
+function question_page_generate() {
     const count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     const question_numbers = JSON.parse(localStorage.getItem('question_numbers'));
     const question_number_text = document.getElementById('Q_number');
@@ -109,7 +86,7 @@ function countQPageVisits() {
     // カウントをインクリメント
     count += 1;
 
-    // ローカジにカウントを保存
+    // ローカルストレージにカウントを保存
     localStorage.setItem('QPageVisitCount', count);
 }
 
@@ -119,17 +96,6 @@ function AA() {
 
     check();
 }
-
-// // ページ遷移の回数を取得する関数
-// function getQPageVisitCount() {
-//     let count = localStorage.getItem('QPageVisitCount');
-//     if (count === null) {
-//         count = 0;
-//     } else {
-//         count = parseInt(count, 10);
-//     }
-//     return count;
-// }
 
 function local_storage_clear() {
     localStorage.clear();
