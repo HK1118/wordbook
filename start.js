@@ -14,31 +14,7 @@ function setTextArea(setText) {
     document.getElementById('input_text').value += setText;
 }
 
-<<<<<<< HEAD
 function fileRead(event) {
-=======
-function buttonClick10() {
-    navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
-    //alert("コピーしました！(10)")
-}
-function Japanese_English() {
-    navigator.clipboard.writeText('英語 English 日本語 Japanese 犬 dog 猫 cat')
-}
-
-function copy_word() {
-    navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
-    //alert("コピーしました！(足し算")
-    party.confetti(runButton, {
-        count: party.variation.range(20, 40),
-    });
-}
-
-function buttonClick2525() {f
-    window.location.replace('Q.html');
-}
-
-function fileRead(event){
->>>>>>> df8ab2b (ああ)
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
