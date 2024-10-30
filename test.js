@@ -1,4 +1,4 @@
-function buttonClick111(){
+function buttonClick111() {
     //alert("こんにちは")
     var pcs = document.getElementById('pcs').value;
     //alert ("pcs: "+pcs)
@@ -27,7 +27,7 @@ function changeText() {
     elm.textContent = 'test change';
 }
 
-function second_page(){
+function second_page() {
     alert("test (in new function)");
     let change_text = document.getElementById('change_text').textContent;
     document.getElementById('change_text').textContent = change_text;

@@ -1,5 +1,3 @@
-
-
 function loadExternalScript(url) {
     const script = document.createElement('script');
     script.src = url;
@@ -14,31 +12,7 @@ function setTextArea(setText) {
     document.getElementById('input_text').value += setText;
 }
 
-<<<<<<< HEAD
 function fileRead(event) {
-=======
-function buttonClick10() {
-    navigator.clipboard.writeText('q1 a1\nq2 a2\nq3 a3\nq4 a4\nq5 a5\nq6 a6\nq7 a7\nq8 a8\nq9 a9\nq10 a10');
-    //alert("コピーしました！(10)")
-}
-function Japanese_English() {
-    navigator.clipboard.writeText('英語 English 日本語 Japanese 犬 dog 猫 cat')
-}
-
-function copy_word() {
-    navigator.clipboard.writeText('1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20');
-    //alert("コピーしました！(足し算")
-    party.confetti(runButton, {
-        count: party.variation.range(20, 40),
-    });
-}
-
-function buttonClick2525() {f
-    window.location.replace('Q.html');
-}
-
-function fileRead(event){
->>>>>>> 28fc349 (aaa)
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
@@ -53,13 +27,13 @@ function fileRead(event){
 }
 
 function start() {
-    const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== ""); // 入力されたテキストを取得し、改行で分割、空の要素を削除
-    if (input_texts.length % 2 !== 0) { // 要素が奇数個の場合リターン
-        alert('問題と答えの数が一致していません');
+    const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== "");
+
+    if (input_texts.length % 2 !== 0 || input_texts.length == 0) { // 要素が奇数個の場合リターン
+        alert('入力が正しくありません');
         return;
     }
 
-    localStorage.setItem('input_texts_save', JSON.stringify(document.getElementById('input_text').value)); // 配列はJSON形式でローカルストレージに保存
     // 配列はJSON形式でローカルストレージに保存
     // 取り出す時はJSON.parse()で取り出す
     localStorage.setItem('input_texts', JSON.stringify(input_texts));
@@ -126,12 +100,12 @@ function AA() {
 
 function local_storage_clear() {
     localStorage.clear();
-    localStorage.setItem('correct_yourA',JSON.stringify(null));
-    localStorage.setItem('miss_yourA',JSON.stringify(null));
-    localStorage.setItem('correct_Question',JSON.stringify(null));
-    localStorage.setItem('miss_Question',JSON.stringify(null));
-    localStorage.setItem('correct_Answer',JSON.stringify(null));
-    localStorage.setItem('miss_Answer',JSON.stringify(null));
+    localStorage.setItem('correct_yourA', JSON.stringify(null));
+    localStorage.setItem('miss_yourA', JSON.stringify(null));
+    localStorage.setItem('correct_Question', JSON.stringify(null));
+    localStorage.setItem('miss_Question', JSON.stringify(null));
+    localStorage.setItem('correct_Answer', JSON.stringify(null));
+    localStorage.setItem('miss_Answer', JSON.stringify(null));
 }
 
 
@@ -167,19 +141,19 @@ function page_A() {
 
         var correct_yourA = JSON.parse(localStorage.getItem('correct_yourA')) || [];
         correct_yourA.push(yourA);
-        alert(correct_yourA);
-        localStorage.setItem('correct_yourA',JSON.stringify(correct_yourA));
-        
+        // alert(correct_yourA);
+        localStorage.setItem('correct_yourA', JSON.stringify(correct_yourA));
+
         var correct_Answer = JSON.parse(localStorage.getItem('correct_Answer')) || [];
         correct_Answer.push(AA[random4]);
-        alert(correct_Answer);
-        localStorage.setItem('correct_yourA',JSON.stringify(correct_Answer));
+        // alert(correct_Answer);
+        localStorage.setItem('correct_yourA', JSON.stringify(correct_Answer));
 
 
         var correct_Question = JSON.parse(localStorage.getItem('correct_Question')) || [];
         correct_Question.push();
-        alert(correct_Question);
-        localStorage.setItem('correct_Question',JSON.stringify(correct_Question));
+        // alert(correct_Question);
+        localStorage.setItem('correct_Question', JSON.stringify(correct_Question));
 
 
     } else {
@@ -189,13 +163,13 @@ function page_A() {
 
         var miss_yourA = JSON.parse(localStorage.getItem('miss_yourA')) || [];
         miss_yourA.push(yourA);
-        alert(miss_yourA);
-        localStorage.setItem('miss_yourA',JSON.stringify(miss_yourA));
+        // alert(miss_yourA);
+        localStorage.setItem('miss_yourA', JSON.stringify(miss_yourA));
 
         var miss_Answer = JSON.parse(localStorage.getItem('miss_Answer')) || [];
         miss_Answer.push(AA[random4]);
-        alert(miss_Answer);
-        localStorage.setItem('miss_Answer',JSON.stringify(miss_Answer));
+        // alert(miss_Answer);
+        localStorage.setItem('miss_Answer', JSON.stringify(miss_Answer));
     }
 
 }
@@ -221,50 +195,66 @@ function fin() {
     miss.textContent = `不正解数:   ${miss_count}`;
 }
 
-function pressKey(key) {
-    const your_A = document.getElementById('your_A');
-    your_A.value += key;
-}
-function pressKey_s(key) {
-    const text = document.getElementById('input_text');
-    text.value += key;
-}
-function pressKey_s_delete() {
-    let text = document.getElementById('input_text');
-    text.value = text.value.slice(0, -1);
-}
-function pressKey_delete() {
-    let your_A = document.getElementById('your_A');
-    your_A.value = your_A.value.slice(0, -1);
-}
-function pressKey_s_clear() {
-    let text = document.getElementById('input_text');
-    text.value = "";
-}
-function pressKey_clear() {
-    let your_A = document.getElementById('your_A');
-    your_A.value = "";
+function softwareKeyboard(id, input_key) {
+    const element = document.getElementById(id);
+    if (input_key === 'backspace') {
+        element.value = element.value.slice(0, -1);
+    } else if (input_key === 'clear') {
+        element.value = '';
+    } else {
+        element.value += input_key;
+    }
 }
 
-function pressKey_s_shift() {
-    document.getElementById('keypad_s_alpha').classList.add('hidden');
-    document.getElementById('keypad_s_ALPHA').classList.remove('hidden');
+function changeSoftwareKeyboard(change_from_id, change_to_id) {
+    document.getElementById(change_from_id).classList.add('hidden');
+    document.getElementById(change_to_id).classList.remove('hidden');
+}
 
-}
-function pressKey_s_SHIFT() {
-    document.getElementById('keypad_s_ALPHA').classList.add('hidden');
-    document.getElementById('keypad_s_alpha').classList.remove('hidden');
-}
+// function pressKey(key) {
+//     const your_A = document.getElementById('your_A');
+//     your_A.value += key;
+// }
+// function pressKey_s(key) {
+//     const text = document.getElementById('input_text');
+//     text.value += key;
+// }
+// function pressKey_s_delete() {
+//     let text = document.getElementById('input_text');
+//     text.value = text.value.slice(0, -1);
+// }
+// function pressKey_delete() {
+//     let your_A = document.getElementById('your_A');
+//     your_A.value = your_A.value.slice(0, -1);
+// }
+// function pressKey_s_clear() {
+//     let text = document.getElementById('input_text');
+//     text.value = "";
+// }
+// function pressKey_clear() {
+//     let your_A = document.getElementById('your_A');
+//     your_A.value = "";
+// }
+
+// function pressKey_s_shift() {
+//     document.getElementById('keypad_s_alpha').classList.add('hidden');
+//     document.getElementById('keypad_s_ALPHA').classList.remove('hidden');
+
+// }
+// function pressKey_s_SHIFT() {
+//     document.getElementById('keypad_s_ALPHA').classList.add('hidden');
+//     document.getElementById('keypad_s_alpha').classList.remove('hidden');
+// }
 
 function save() {
-    let input_texts = JSON.parse(localStorage.getItem('input_texts_save'));
+    const input_texts = JSON.parse(localStorage.getItem('input_texts'));
     //let input_texts = JSON.parse(localStorage.getItem('input_texts'));
-    alert(input_texts);
-    let blob = new Blob([input_texts], { type: 'text/plain' });
+    // alert(input_texts);
+    let blob = new Blob([input_texts.join(' ')], { type: 'text/plain' });
     let url = URL.createObjectURL(blob);
     let a = document.createElement('a');
     a.href = url;
-    a.download = 'Question.text';
+    a.download = 'Question.txt';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
