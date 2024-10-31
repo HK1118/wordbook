@@ -27,6 +27,9 @@ function fileRead(event) {
 }
 
 function start() {
+    var input_text_normal = document.getElementById('input_text').value;
+    localStorage.setItem('input_text_normal', input_text_normal);
+
     const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== "");
 
     if (input_texts.length % 2 !== 0 || input_texts.length == 0) { // 要素が奇数個の場合リターン
@@ -259,4 +262,10 @@ function save() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+}
+
+function retry(){
+    var Question = localStorage.getItem('input_text_normal');
+    navigator.clipboard.writeText(Question);
+    window.location.href='index.html';
 }
