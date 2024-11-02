@@ -45,8 +45,8 @@
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
     <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>  -->
     <p>足し算<input type="submit" value="テキストボックスに追加"
-            onclick="setTextArea(' 1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20 ')"></p>
-    <p>英語<input type="submit" value="テキストボックスに追加" onclick="setTextArea(' 英語 English 日本語 Japanese 犬 dog 猫 cat ')"></p>
+            onclick="addText('input_text', '1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20 ')"></p>
+    <p>英語<input type="submit" value="テキストボックスに追加" onclick="addText('input_text', '英語 English 日本語 Japanese 犬 dog 猫 cat ')"></p>
     <p>☟ファイルから作成する場合はこちらから</p>
     <input type="file" id="file" onchange="fileRead(event)"><br>
     <p>下の入力ボックスに問題とその答えを入力してください。</p>

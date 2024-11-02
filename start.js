@@ -8,8 +8,8 @@ function loadExternalScript(url) {
 
 loadExternalScript('https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js');
 
-function setTextArea(setText) {
-    document.getElementById('input_text').value += setText + ' ';
+function addText(elementId, text) {
+    document.getElementById(elementId).value += text;
 }
 
 function fileRead(event) {
@@ -18,7 +18,7 @@ function fileRead(event) {
         const reader = new FileReader();
         reader.onload = function (e) {
             const contents = e.target.result;
-            setTextArea(contents);
+            addText('input_text', contents);
         };
         reader.readAsText(file);
     } else {
@@ -27,77 +27,65 @@ function fileRead(event) {
 }
 
 function start() {
-    var input_text_normal = document.getElementById('input_text').value;
-    localStorage.setItem('input_text_normal', input_text_normal);
-
-    const input_texts = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== "");
-
-    if (input_texts.length % 2 !== 0 || input_texts.length === 0) { // 要素が奇数個又は0個の場合リターン
+    const inputTextArray = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== "");
+    if (inputTextArray.length % 2 !== 0 || inputTextArray.length === 0) { // 要素が奇数個又は0個の場合リターン
         alert('入力が正しくありません');
         return;
     }
+    initializeQuestion(inputTextArray);
+}
 
-    // 配列はJSON形式でローカルストレージに保存
-    // 取り出す時はJSON.parse()で取り出す
-    localStorage.setItem('input_texts', JSON.stringify(input_texts));
-    const question_count = input_texts.length / 2;    // 問題の個数
-    localStorage.setItem('question_count', question_count);
-
-    window.location.href = 'Q.html';
-
-    const question_numbers = Array.from(Array(question_count).keys());
-    for (let i = question_numbers.length - 1; i > 0; i--) { // question_numbersをシャッフル
+function initializeQuestion(textArray) {
+    const questionCount = textArray.length / 2;    // 問題の個数
+    const questionIndexArray = Array.from(Array(questionCount).keys());
+    for (let i = questionIndexArray.length - 1; i > 0; i--) { // questionIndexArrayをシャッフル
         let j = Math.floor(Math.random() * (i + 1));
-        [question_numbers[i], question_numbers[j]] = [question_numbers[j], question_numbers[i]];
+        [questionIndexArray[i], questionIndexArray[j]] = [questionIndexArray[j], questionIndexArray[i]];
     }
-    localStorage.setItem('question_numbers', JSON.stringify(question_numbers));
+    localStorage.setItem('inputTextArray', JSON.stringify(textArray));
+    localStorage.setItem('questionCount', questionCount);
+    localStorage.setItem('questionIndexArray', JSON.stringify(questionIndexArray));
+    window.location.href = 'Q.html';
 }
 
 function questionPageGenerate() {
     const count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    const question_numbers = JSON.parse(localStorage.getItem('question_numbers'));
+    const question_numbers = JSON.parse(localStorage.getItem('questionIndexArray'));
     const question_number_text = document.getElementById('Q_number');
     question_number_text.textContent = `第${count + 1}問`;
     const random_key = question_numbers[count] * 2;
-    const input_texts = JSON.parse(localStorage.getItem('input_texts'));
-    const question_text = document.getElementById('Q');
-    question_text.textContent = input_texts[random_key];
-    localStorage.setItem('now_Question', input_texts[random_key]);
+    const inputTextArray = JSON.parse(localStorage.getItem('inputTextArray'));
+    const questionElement = document.getElementById('Q');
+    questionElement.textContent = inputTextArray[random_key];
+    localStorage.setItem('now_Question', inputTextArray[random_key]);
 }
 
 function pageChange() {
     window.location.replace('A.html');
     var YourA = document.getElementById('your_A').value;
-    //alert("あなたの回答:   "+YourA)
     localStorage.setItem('yourA', YourA);
-
 }
 
-// ページ遷移の回数をカウントする関数
-function countQPageVisits() {
-    // ローカルストレージからカウントを取得
-    var count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+function judgmentNextPage() {
+    var visitCount = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
+    visitCount += 1;
+    localStorage.setItem('QPageVisitCount', visitCount);
 
-    count += 1;
-
-    // ローカルストレージにカウントを保存
-    localStorage.setItem('QPageVisitCount', count);
+    let questionCount = parseInt(localStorage.getItem('questionCount')) || 0;
+    if (visitCount > questionCount - 1) {
+        window.location.replace('fin.html');
+    } else {
+        window.location.replace('Q.html');
+    }
 }
 
-// Q.htmlに遷移する関数
-function AA() {
-    countQPageVisits(); // ページ遷移の回数をカウント
-
-    check();
-}
-
-function page_A() {
-    let random_numbers = JSON.parse(localStorage.getItem('question_numbers'));
+function answerPageGenerate() {
+    let random_numbers = JSON.parse(localStorage.getItem('questionIndexArray'));
     let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
 
-    document.getElementById('A_number').textContent = `第${count +1}問`;
+    document.getElementById('A_number').textContent = `第${count + 1}問`;
     var random3 = random_numbers[count];
-    var AA = JSON.parse(localStorage.getItem('input_texts'));
+    var AA = JSON.parse(localStorage.getItem('inputTextArray'));
     var random4 = random3 * 2 + 1;
     document.getElementById('A').textContent = `正しい答え:　　${AA[random4]}`;
 
@@ -143,19 +131,8 @@ function page_A() {
         localStorage.setItem('miss_Question', JSON.stringify(miss_Question));
     }
 }
-//ぺーーーーじ遷移ーーーー！！最終！！！！！！
-function check() {
-    let count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
-    let q_number = parseInt(localStorage.getItem('question_count')) || 0;
 
-    if (count > q_number - 1) {
-        window.location.replace('fin.html');
-    } else {
-        window.location.replace('Q.html');
-    }
-}
-
-function fin() {
+function finalPageGenerate() {
     let correct_count = parseInt(localStorage.getItem('correct_count')) || 0;
     let miss_count = parseInt(localStorage.getItem('miss_count')) || 0;
     var correct = document.getElementById('correct');
@@ -164,25 +141,25 @@ function fin() {
     miss.textContent = `不正解数:   ${miss_count}`;
 }
 
-function softwareKeyboard(id, input_key) {
-    const element = document.getElementById(id);
-    if (input_key === 'backspace') {
+function softwareKeyboard(textAreaId, keyboardInput) {
+    const element = document.getElementById(textAreaId);
+    if (keyboardInput === 'backspace') {
         element.value = element.value.slice(0, -1);
-    } else if (input_key === 'clear') {
+    } else if (keyboardInput === 'clear') {
         element.value = '';
     } else {
-        element.value += input_key;
+        element.value += keyboardInput;
     }
 }
 
-function changeSoftwareKeyboard(change_from_id, change_to_id) {
-    document.getElementById(change_from_id).classList.add('hidden');
-    document.getElementById(change_to_id).classList.remove('hidden');
+function changeSoftwareKeyboard(currentKeyboardId, newKeyboardId) {
+    document.getElementById(currentKeyboardId).classList.add('hidden');
+    document.getElementById(newKeyboardId).classList.remove('hidden');
 }
 
-function save() {
-    const input_texts = JSON.parse(localStorage.getItem('input_texts'));
-    let blob = new Blob([input_texts.join(' ')], { type: 'text/plain' });
+function saveToFile() {
+    const inputTextArray = JSON.parse(localStorage.getItem('inputTextArray'));
+    let blob = new Blob([inputTextArray.join(' ') + ' '], { type: 'text/plain' });
     let url = URL.createObjectURL(blob);
     let a = document.createElement('a');
     a.href = url;
@@ -193,8 +170,8 @@ function save() {
     URL.revokeObjectURL(url);
 }
 
-function retry(){
-    var Question = localStorage.getItem('input_text_normal');
-    navigator.clipboard.writeText(Question);わ
-    window.location.href='index.html';
+function retry() {
+    const inputTextArray = JSON.parse(localStorage.getItem('inputTextArray'));
+    localStorage.clear();
+    initializeQuestion(inputTextArray);
 }
