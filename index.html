@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1, maximum-scale=1, user-scalable=no">
     <title>wordbook</title>
     <script src="start.js"></script>
     <style>
@@ -24,29 +25,53 @@
             margin: 29px auto;
         }
 
+        #keypad_s_alpha, 
+        #keypad_s_ALPHA {
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding: 10%;
+            gap: 10px;
+            margin: 29px auto;
+        }
+
+
+        .key-n {
+            padding: 10%;
+            border-radius: 50px;
+        }
+
+        .key {
+            padding: 3%;
+            border-radius: 50px;
+        }
+
         .hidden {
             display: none;
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelectorAll('button').forEach(button => {
-                button.addEventListener('dblclick', (e) => {
-                    e.preventDefault(); // ダブルクリックイベントを無効にする
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+                document.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('dblclick', (e) => {
+                        e.preventDefault(); // ダブルクリックイベントを無効にする
+                    });
                 });
             });
-        });
+
     </script>
 </head>
-
 <body onload="localStorage.clear()">
     <h1>問題入力フォーム</h1>
     <p>↓動作確認用↓</p>
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
     <p>(10) <input type="submit" value="コピー" onclick="buttonClick10()"></p>  -->
     <p>足し算<input type="submit" value="テキストボックスに追加"
-            onclick="addText('input_text', '1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20 ')"></p>
-    <p>英語<input type="submit" value="テキストボックスに追加" onclick="addText('input_text', '英語 English 日本語 Japanese 犬 dog 猫 cat ')"></p>
+            onclick="addText('input_text', '1+1= 2 2+2= 4 3+3= 6 4+4= 8 5+5= 10 6+6= 12 7+7= 14 8+8= 16 9+9= 18 10+10= 20 ')">
+    </p>
+    <p>英語<input type="submit" value="テキストボックスに追加"
+            onclick="addText('input_text', '英語 English 日本語 Japanese 犬 dog 猫 cat ')"></p>
     <p>☟ファイルから作成する場合はこちらから</p>
     <input type="file" id="file" onchange="fileRead(event)"><br>
     <p>下の入力ボックスに問題とその答えを入力してください。</p>
@@ -56,65 +81,74 @@
     <input type="submit" value="レッツスタート！！！" onclick="start()">
 
     <div id="keypad_s">
-        <button class="key" onclick="softwareKeyboard('input_text', '1')">1</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '2')">2</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '3')">3</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '+')">+</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '4')">4</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '5')">5</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '6')">6</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '-')">-</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '7')">7</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '8')">8</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '9')">9</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '=')">=</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '.')">.</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '0')">0</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '(')">(</button>
-        <button class="key" onclick="softwareKeyboard('input_text', ')')">)</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'x')">x</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'y')">y</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '\n')">改行</button>
-        <button class="key" onclick="softwareKeyboard('input_text', ' ')">空白</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'backspace')">削除</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'clear')">クリア</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '1')">1</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '2')">2</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '3')">3</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '+')">+</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '4')">4</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '5')">5</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '6')">6</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '-')">-</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '7')">7</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '8')">8</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '9')">9</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '=')">=</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '.')">.</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '0')">0</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '(')">(</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', ')')">)</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', 'x')">x</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', 'y')">y</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', '\n')">改行</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', ' ')">空白</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', 'backspace')">削除</button>
+        <button class="key-n" onclick="softwareKeyboard('input_text', 'clear')">クリア</button>
     </div>
+
     <div id="keypad_s_alpha">
-
-        <button class="key" onclick="softwareKeyboard('input_text', 'q')">q</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'w')">w</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'e')">e</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'r')">r</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 't')">t</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'y')">y</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'u')">u</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'i')">i</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'o')">o</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'p')">p</button><br>
-        <button class="key" onclick="softwareKeyboard('input_text', 'a')">a</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 's')">s</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'd')">d</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'f')">f</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'g')">g</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'h')">h</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'j')">j</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'k')">k</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'l')">l</button><br>
-        <button class="key" onclick="changeSoftwareKeyboard('keypad_s_alpha', 'keypad_s_ALPHA')">⇧</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'z')">z</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'x')">x</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'c')">c</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'v')">v</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'b')">b</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'n')">n</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'm')">m</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'backspace')">削除</button><br>
-        <button class="key" onclick="softwareKeyboard('input_text', ' ')">空白</button>
-        <button class="key" onclick="softwareKeyboard('input_text', '\n')">改行</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'clear')">クリア</button>
+    <div id="keypad_s_alpha-1">
+        <button class="key key-q" onclick="softwareKeyboard('input_text', 'q')">q</button>
+        <button class="key key-w" onclick="softwareKeyboard('input_text', 'w')">w</button>
+        <button class="key key-e" onclick="softwareKeyboard('input_text', 'e')">e</button>
+        <button class="key key-r" onclick="softwareKeyboard('input_text', 'r')">r</button>
+        <button class="key key-t" onclick="softwareKeyboard('input_text', 't')">t</button>
+        <button class="key key-y" onclick="softwareKeyboard('input_text', 'y')">y</button>
+        <button class="key key-u" onclick="softwareKeyboard('input_text', 'u')">u</button>
+        <button class="key key-i" onclick="softwareKeyboard('input_text', 'i')">i</button>
+        <button class="key key-o" onclick="softwareKeyboard('input_text', 'o')">o</button>
+        <button class="key key-p" onclick="softwareKeyboard('input_text', 'p')">p</button>
     </div>
-    <div id="keypad_s_ALPHA" class="hidden">
+    <div id="keypad_s_alpha-2">
+        <button class="key key-a" onclick="softwareKeyboard('input_text', 'a')">a</button>
+        <button class="key key-s" onclick="softwareKeyboard('input_text', 's')">s</button>
+        <button class="key key-d" onclick="softwareKeyboard('input_text', 'd')">d</button>
+        <button class="key key-f" onclick="softwareKeyboard('input_text', 'f')">f</button>
+        <button class="key key-g" onclick="softwareKeyboard('input_text', 'g')">g</button>
+        <button class="key key-h" onclick="softwareKeyboard('input_text', 'h')">h</button>
+        <button class="key key-j" onclick="softwareKeyboard('input_text', 'j')">j</button>
+        <button class="key key-k" onclick="softwareKeyboard('input_text', 'k')">k</button>
+        <button class="key key-l" onclick="softwareKeyboard('input_text', 'l')">l</button>
+    </div>
+    <div id="keypad_s_alpha-3">
+        <button class="key key-sf" onclick="changeSoftwareKeyboard('keypad_s_alpha', 'keypad_s_ALPHA')">⇧</button>
+        <button class="key key-z" onclick="softwareKeyboard('input_text', 'z')">z</button>
+        <button class="key key-x" onclick="softwareKeyboard('input_text', 'x')">x</button>
+        <button class="key key-c" onclick="softwareKeyboard('input_text', 'c')">c</button>
+        <button class="key key-v" onclick="softwareKeyboard('input_text', 'v')">v</button>
+        <button class="key key-b" onclick="softwareKeyboard('input_text', 'b')">b</button>
+        <button class="key key-nn" onclick="softwareKeyboard('input_text', 'n')">n</button>
+        <button class="key key-m" onclick="softwareKeyboard('input_text', 'm')">m</button>
+        <button class="key key-bc" onclick="softwareKeyboard('input_text', 'backspace')">削除</button>
+    </div>
+    <div id="keypad_s_alpha-4">
+        <button class="key key-/s" onclick="softwareKeyboard('input_text', ' ')">空白</button>
+        <button class="key key-/n" onclick="softwareKeyboard('input_text', '\n')">改行</button>
+        <button class="key key-cl" onclick="softwareKeyboard('input_text', 'clear')">クリア</button>
+    </div>
+    </div>
 
+    <div id="keypad_s_ALPHA" class="hidden">
+    <div id="keypad_s_ALPHA-1">
         <button class="key" onclick="softwareKeyboard('input_text', 'Q')">Q</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'W')">W</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'E')">E</button>
@@ -124,7 +158,9 @@
         <button class="key" onclick="softwareKeyboard('input_text', 'U')">U</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'I')">I</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'O')">O</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'P')">P</button><br>
+        <button class="key" onclick="softwareKeyboard('input_text', 'P')">P</button>
+    </div>
+    <div id="keypad_s_ALPHA-2">
         <button class="key" onclick="softwareKeyboard('input_text', 'A')">A</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'S')">S</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'D')">D</button>
@@ -133,8 +169,10 @@
         <button class="key" onclick="softwareKeyboard('input_text', 'H')">H</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'J')">J</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'K')">K</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'L')">L</button><br>
-        <button class="key" onclick="changeSoftwareKeyboard('keypad_s_ALPHA', 'keypad_s_alpha')">⇧</button>
+        <button class="key" onclick="softwareKeyboard('input_text', 'L')">L</button>
+    </div>
+    <div id="keypad_s_ALPHA-3">  
+        <button class="key" onclick="changeSoftwareKeyboard('keypad_s_ALPHA', 'keypad_s_alpha')">⇧</button> 
         <button class="key" onclick="softwareKeyboard('input_text', 'Z')">Z</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'X')">X</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'C')">C</button>
@@ -142,11 +180,13 @@
         <button class="key" onclick="softwareKeyboard('input_text', 'B')">B</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'N')">N</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'M')">M</button>
-        <button class="key" onclick="softwareKeyboard('input_text', 'backspace')">削除</button><br>
+        <button class="key" onclick="softwareKeyboard('input_text', 'backspace')">削除</button>
+    </div>
+    <div id="keypad_s_ALPHA-4">
         <button class="key" onclick="softwareKeyboard('input_text', '\n')">改行</button>
         <button class="key" onclick="softwareKeyboard('input_text', ' ')">空白</button>
         <button class="key" onclick="softwareKeyboard('input_text', 'clear')">クリア</button>
-
+    </div>
     </div>
 
 

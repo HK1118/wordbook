@@ -20,6 +20,23 @@
             margin: 29px auto;
         }
 
+
+        #keypad_s_alpha,
+        #keypad_s_ALPHA {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 10%;
+            gap: 10px;
+            margin: 29px auto;
+        }
+
+        .key-n {
+            padding: 10%;
+            border-radius: 50px;
+        }
+
         .hidden {
             display: none;
         }
@@ -41,97 +58,113 @@
     <input type="text" id="your_A" autocomplete="off">
     <input type="submit" value="答え" onclick="pageChange()">
     <div id="keypad">
-        <button class="key" onclick="softwareKeyboard('your_A', '1')">1</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '2')">2</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '3')">3</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '+')">+</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '4')">4</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '5')">5</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '6')">6</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '-')">-</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '7')">7</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '8')">8</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '9')">9</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '=')">=</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '.')">.</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '0')">0</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '(')">(</button>
-        <button class="key" onclick="softwareKeyboard('your_A', ')')">)</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'x')">x</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'y')">y</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '\n')">改行</button>
-        <button class="key" onclick="softwareKeyboard('your_A', ' ')">空白</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'backspace')">削除</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '1')">1</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '2')">2</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '3')">3</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '+')">+</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '4')">4</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '5')">5</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '6')">6</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '-')">-</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '7')">7</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '8')">8</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '9')">9</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '=')">=</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '.')">.</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '0')">0</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '(')">(</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', ')')">)</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', 'x')">x</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', 'y')">y</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', '\n')">改行</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', ' ')">空白</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', 'backspace')">削除</button>
+        <button class="key-n" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
     </div>
 
     <div id="keypad_s_alpha">
-
-        <button class="key" onclick="softwareKeyboard('your_A', 'q')">q</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'w')">w</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'e')">e</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'r')">r</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 't')">t</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'y')">y</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'u')">u</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'i')">i</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'o')">o</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'p')">p</button><br>
-        <button class="key" onclick="softwareKeyboard('your_A', 'a')">a</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 's')">s</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'd')">d</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'f')">f</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'g')">g</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'h')">h</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'j')">j</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'k')">k</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'l')">l</button><br>
-        <button class="key" onclick="changeSoftwareKeyboard('keypad_s_alpha', 'keypad_s_ALPHA')">⇧</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'z')">z</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'x')">x</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'c')">c</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'v')">v</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'b')">b</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'n')">n</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'm')">m</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'backspace')">削除</button><br>
-        <button class="key" onclick="softwareKeyboard('your_A', ' ')">空白</button>
-        <button class="key" onclick="softwareKeyboard('your_A', '\n')">改行</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
+        <div id="keypad_s_alpha-1">
+            <button class="key" onclick="softwareKeyboard('your_A', 'q')">q</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'w')">w</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'e')">e</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'r')">r</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 't')">t</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'y')">y</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'u')">u</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'i')">i</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'o')">o</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'p')">p</button>
+        </div>
+        <div id="keypad_s_alpha-2">
+            <button class="key" onclick="softwareKeyboard('your_A', 'a')">a</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 's')">s</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'd')">d</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'f')">f</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'g')">g</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'h')">h</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'j')">j</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'k')">k</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'l')">l</button><br>
+        </div>
+        <div id="keypad_s_alpha-3">
+            <button class="key" onclick="changeSoftwareKeyboard('keypad_s_alpha', 'keypad_s_ALPHA')">⇧</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'z')">z</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'x')">x</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'c')">c</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'v')">v</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'b')">b</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'n')">n</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'm')">m</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'backspace')">削除</button>
+        </div>
+        <div id="keypad_s_alpha-4">
+            <button class="key" onclick="softwareKeyboard('your_A', ' ')">空白</button>
+            <button class="key" onclick="softwareKeyboard('your_A', '\n')">改行</button>
+            <button class="key" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
+        </div>
     </div>
-    <div id="keypad_s_ALPHA" class="hidden">
-
-        <button class="key" onclick="softwareKeyboard('your_A', 'Q')">Q</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'W')">W</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'E')">E</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'R')">R</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'T')">T</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'Y')">Y</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'U')">U</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'I')">I</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'O')">O</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'P')">P</button><br>
-        <button class="key" onclick="softwareKeyboard('your_A', 'A')">A</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'S')">S</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'D')">D</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'F')">F</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'G')">G</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'H')">H</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'J')">J</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'K')">K</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'L')">L</button><br>
-        <button class="key" onclick="changeSoftwareKeyboard('keypad_s_ALPHA', 'keypad_s_alpha')">⇧</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'Z')">Z</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'X')">X</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'C')">C</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'V')">V</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'B')">B</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'N')">N</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'M')">M</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'backspace')">削除</button><br>
-        <button class="key" onclick="softwareKeyboard('your_A', '\n')">改行</button>
-        <button class="key" onclick="softwareKeyboard('your_A', ' ')">空白</button>
-        <button class="key" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
+    
+        <div id="keypad_s_ALPHA" class="hidden">
+            <div id="keypad_s_ALPHA-1">
+                <button class="key" onclick="softwareKeyboard('your_A', 'Q')">Q</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'W')">W</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'E')">E</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'R')">R</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'T')">T</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'Y')">Y</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'U')">U</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'I')">I</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'O')">O</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'P')">P</button>
+            </div>
+            <div id="keypad_s_ALPHA-2">
+                <button class="key" onclick="softwareKeyboard('your_A', 'A')">A</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'S')">S</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'D')">D</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'F')">F</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'G')">G</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'H')">H</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'J')">J</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'K')">K</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'L')">L</button>
+            </div>
+            <div id="keypad_s_ALPHA-3">
+                <button class="key" onclick="changeSoftwareKeyboard('keypad_s_ALPHA', 'keypad_s_alpha')">⇧</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'Z')">Z</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'X')">X</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'C')">C</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'V')">V</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'B')">B</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'N')">N</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'M')">M</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'backspace')">削除</button>
+            </div>
+            <div id="keypad_s_ALPHA-4">
+                <button class="key" onclick="softwareKeyboard('your_A', '\n')">改行</button>
+                <button class="key" onclick="softwareKeyboard('your_A', ' ')">空白</button>
+                <button class="key" onclick="softwareKeyboard('your_A', 'clear')">クリア</button>
+            </div>
+        </div>
 
     </div>
 
