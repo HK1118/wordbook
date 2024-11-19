@@ -14,9 +14,10 @@
         }
 
         textarea {
+            width: 80%;
+            max-width: 720px;
             resize: none;
         }
-
         #keypad_s {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -25,16 +26,38 @@
             margin: 29px auto;
         }
 
-        #keypad_s_alpha, 
-        #keypad_s_ALPHA {
-            position: absolute;
-            left: 0;
-            right: 0;
-            padding: 10%;
-            gap: 10px;
+        #keypad_s_alpha, #keypad_s_ALPHA {
+            max-width: 720px;
             margin: 29px auto;
         }
 
+        #keypad_s_alpha-1, #keypad_s_ALPHA-1 {
+            display: grid;
+            grid-template-columns: repeat(10,1fr);
+            gap: 10px;
+            margin: auto;
+        }
+        #keypad_s_alpha-2, #keypad_s_ALPHA-2 {
+            width: 90%;
+            display: grid;
+            grid-template-columns: repeat(9,1fr);
+            gap:10px;
+            margin: auto;
+        }
+        #keypad_s_alpha-3, #keypad_s_ALPHA-3 {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 15% auto auto auto auto auto auto auto 15%;
+            gap: 10px;
+            margin: auto;
+        }
+        #keypad_s_alpha-4, #keypad_s_ALPHA-4 {
+            width: 50%;
+            display: grid;
+            grid-template-columns: 33% 34% 33%;
+            gap: 10px;
+            margin: auto;
+        }
 
         .key-n {
             padding: 10%;
@@ -42,7 +65,9 @@
         }
 
         .key {
-            padding: 3%;
+            margin: 5%;
+            height: 50px;
+            padding: 10%;
             border-radius: 50px;
         }
 
