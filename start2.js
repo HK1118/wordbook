@@ -76,9 +76,9 @@ function pageChange() {
 
     localStorage.setItem('yourA', UserAnswer);
 
-    setTimeout(() => {
+    //setTimeout(() => {
         window.location.replace('A.html');
-    }, 1000);
+    //}, 10);
 }
 
 
