@@ -1,4 +1,111 @@
 {
-    "liveServer.settings.port": 5518,
+    "liveServer.settings.port": 5519,
     "livePreview.defaultPreviewPath": "/test2.html"
+}
+
+
+{
+    "workbench.colorTheme": "Default Light Modern",
+    "editor.fontFamily": "'Rounded M+', 'Noto Sans JP', 'メイリオ', 'ＭＳ ゴシック', monospace",
+    "workbench.colorCustomizations": {
+      // エディタの背景とテキストの色
+      "editor.background": "#FFE4E1", // ミスティローズ
+      "editor.foreground": "#000000", // 黒色
+  
+      // 選択範囲と現在の行のハイライト
+      "editor.selectionBackground": "#FFB6C1", // ライトピンク
+      "editor.lineHighlightBackground": "#FFD1DC", // ピンク
+  
+      // カーソルの色
+      "editorCursor.foreground": "#FF69B4", // ホットピンク
+  
+      // 行番号
+      "editorLineNumber.foreground": "#DB7093", // パレバイオレットレッド
+      "editorLineNumber.activeForeground": "#C71585", // ミディアムバイオレットレッド
+  
+      // 括弧のマッチング
+      "editorBracketMatch.background": "#FFC0CB", // ピンク
+      "editorBracketMatch.border": "#FF69B4", // ホットピンク
+  
+      // エラーと警告
+      "editorError.foreground": "#FF4500", // オレンジレッド
+      "editorWarning.foreground": "#FFA07A", // ライトサーモン
+  
+      // ステータスバー
+      "statusBar.background": "#FFB6C1", // ライトピンク
+      "statusBar.foreground": "#000000", // 黒色
+  
+      // サイドバー
+      "sideBar.background": "#FFF0F5", // ラベンダーブラッシュ
+      "sideBar.foreground": "#000000", // 黒色
+  
+      // アクティビティバー
+      "activityBar.background": "#FFC0CB", // ピンク
+      "activityBar.foreground": "#000000", // 黒色
+      "activityBarBadge.background": "#FF69B4", // ホットピンク
+      "activityBarBadge.foreground": "#FFFFFF", // 白色
+  
+      // タブ
+      "tab.activeBackground": "#FFB6C1", // ライトピンク
+      "tab.inactiveBackground": "#FFE4E1", // ミスティローズ
+      "tab.activeForeground": "#000000", // 黒色
+      "tab.inactiveForeground": "#696969", // ディムグレー
+  
+      // スクロールバー
+      "scrollbarSlider.activeBackground": "#FF69B4AA", // 半透明ホットピンク
+      "scrollbarSlider.background": "#FFB6C1AA", // 半透明ライトピンク
+      "scrollbarSlider.hoverBackground": "#FF69B4AA" // 半透明ホットピンク
+    },
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": "comment",
+          "settings": {
+            "foreground": "#A020F0" // パープル
+          }
+        },
+        {
+          "scope": "string",
+          "settings": {
+            "foreground": "#FF1493" // ディープピンク
+          }
+        },
+        {
+          "scope": "keyword",
+          "settings": {
+            "foreground": "#FF69B4" // ホットピンク
+          }
+        },
+        {
+          "scope": "entity.name.function",
+          "settings": {
+            "foreground": "#DB7093" // パレバイオレットレッド
+          }
+        },
+        {
+          "scope": "variable",
+          "settings": {
+            "foreground": "#C71585" // ミディアムバイオレットレッド
+          }
+        },
+        {
+          "scope": "constant.numeric",
+          "settings": {
+            "foreground": "#FF4500" // オレンジレッド
+          }
+        },
+        {
+          "scope": "storage.type",
+          "settings": {
+            "foreground": "#FF6347" // トマト
+          }
+        },
+        {
+          "scope": "keyword.operator",
+          "settings": {
+            "foreground": "#FF69B4" // ホットピンク
+        }
+      }
+    ]
+  }
 }

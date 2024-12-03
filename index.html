@@ -87,7 +87,7 @@
 
     </script>
 </head>
-<body onload="localStorage.clear()">
+<body onload="localStorage.clear(), OKindex()">
     <h1>問題入力フォーム</h1>
     <p>↓動作確認用↓</p>
     <!--    <p>(3) <input type="submit" value="コピー" onclick="buttonClick3()"></p>
@@ -99,6 +99,15 @@
             onclick="addText('input_text', '英語 English 日本語 Japanese 犬 dog 猫 cat ')"></p>
     <p>☟ファイルから作成する場合はこちらから</p>
     <input type="file" id="file" onchange="fileRead(event)"><br>
+    <p>設定</p>
+    <label for="select">〇✕判定:</label>
+    <select id="select" size="1" >
+        <option value="on" selected>表示する</option>
+        <option value="off">表示しない</option>
+    </select>
+    <input type="range" id="range" value="1" min="0" max="2" step="0.2" oninput="updateRange()">
+    <p><span id="seconds">3</span>s</p>
+    <button onclick="select()">適用</button>
     <p>下の入力ボックスに問題とその答えを入力してください。</p>
     <p>※"問題と答え"、"答えと次の問題"の間には半角スペースまたは改行を挟んでください。</p>
     <textarea id="input_text" placeholder="例: Q1 A1 Q2 A2 Q3 A3" rows="10" cols="50"></textarea><br>

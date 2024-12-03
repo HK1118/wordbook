@@ -1,3 +1,5 @@
+
+
 function loadExternalScript(url) {
     const script = document.createElement('script');
     script.src = url;
@@ -27,12 +29,20 @@ function fileRead(event) {
 }
 
 function start() {
+    alert('start');
     const inputTextArray = document.getElementById('input_text').value.split(/\n|\s/).filter(element => element !== "");
     if (inputTextArray.length % 2 !== 0 || inputTextArray.length === 0) { // 要素が奇数個又は0個の場合リターン
         alert('入力が正しくありません');
         return;
     }
     initializeQuestion(inputTextArray);
+}
+
+function select() {
+    alert('こんにちは');
+    var select = document.getElementById('select');
+    var selectValue = select.options[selectValue.selectedIndex].value;
+    alert(selectValue);
 }
 
 function initializeQuestion(textArray) {

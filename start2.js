@@ -1,3 +1,16 @@
+function updateRange() {
+    var rangeValue = document.getElementById('range').value;
+    var originValue = document.getElementById('seconds');
+    originValue.textContent = rangeValue;
+}
+
+function OKindex() {
+    localStorage.setItem('select', 'on');
+    localStorage.setItem('range', '1');
+}
+
+
+
 function loadExternalScript(url) {
     const script = document.createElement('script');
     script.src = url;
@@ -35,6 +48,15 @@ function start() {
     initializeQuestion(inputTextArray);
 }
 
+function select() {
+    var select = document.getElementById('select');
+    var selectValue = select.options[select.selectedIndex].value;
+    alert(selectValue);
+    localStorage.setItem('select', selectValue);
+    var range = document.getElementById('range').value;
+    localStorage.setItem('range', range);
+}
+
 function initializeQuestion(textArray) {
     const questionCount = textArray.length / 2;    // 問題の個数
     const questionIndexArray = Array.from(Array(questionCount).keys());
@@ -60,29 +82,36 @@ function questionPageGenerate() {
     localStorage.setItem('now_Question', inputTextArray[random_key]);
     localStorage.setItem('random_key', random_key);
 }
-
-function pageChange() {
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function pageChange() {
     const count = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
     const now_Question = JSON.parse(localStorage.getItem('inputTextArray'));
     const random_key = parseInt(localStorage.getItem('random_key'));
     const UserAnswer = document.getElementById('your_A').value;
-    if (UserAnswer == now_Question[random_key + 1]) {
-        const image = document.getElementById('correct_img');
-        image.classList.remove('hidden');
-    } else {
-        const image = document.getElementById('miss_img');
-        image.classList.remove('hidden');
+    const select = localStorage.getItem('select');
+    if (select == 'on') {
+        if (UserAnswer == now_Question[random_key + 1]) {
+            const image = document.getElementById('correct_img');
+            image.classList.remove('hidden');
+        } else {
+            const image = document.getElementById('miss_img');
+            image.classList.remove('hidden');
+        }
+        const timeoutCount = parseInt(localStorage.getItem('range'), 10) || 0;
+        await sleep(timeoutCount * 1000);
     }
 
     localStorage.setItem('yourA', UserAnswer);
 
     //setTimeout(() => {
-        window.location.replace('A.html');
+    window.location.replace('A.html');
     //}, 10);
 }
 
 
-    
+
 
 function judgmentNextPage() {
     var visitCount = parseInt(localStorage.getItem('QPageVisitCount')) || 0;
